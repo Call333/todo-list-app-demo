@@ -1,18 +1,19 @@
 package models.entity;
 
+import java.util.UUID;
+
 public class Todo {
-	private Integer id;
+	private UUID id;
 	private String titulo;
 	private String descricao;
 
-	public Todo(Integer id, String titulo, String descricao) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
+	public Todo(String titulo, String descricao) {
+		this.id = UUID.randomUUID();
+;		this.titulo = titulo;
 		this.descricao = descricao;
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
 

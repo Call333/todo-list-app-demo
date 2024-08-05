@@ -3,32 +3,35 @@ package models.entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class User {
 
-	private Integer id;
+	private UUID id;
 	private String nome;
 	private LocalDate birthDate;
-	
+	private String password;
+
 	private List<Todo> todos = new ArrayList<>();
-	
-	public User(Integer id, String nome, LocalDate birthDate) {
+
+	public User( String nome, LocalDate birthDate, String password) {
 		super();
-		this.id = id;
+		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.birthDate = birthDate;
+		this.password = password;
 	}
-	
+
 	public String addTodo(Todo todo) {
 		todos.add(todo);
 		return "TO DO ADICIONADO!";
 	}
-	
+
 	public String removeTodo(Todo todo) {
 		todos.remove(todo);
 		return "TO DO REMOVIDO!";
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -45,17 +48,29 @@ public class User {
 		this.birthDate = birthDate;
 	}
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
-	
+
 	public List<Todo> getTodos() {
 		return todos;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", nome=" + nome + ", birthDate=" + birthDate + "]";
+		return " ====== User "+ nome + " ====== " 
+				+ "\n Id: " + id 
+				+ "\n Nome: " + nome
+				+ "\n Nascimento: " + birthDate
+				+ "\n To Do's " + todos;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }
