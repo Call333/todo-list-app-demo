@@ -16,7 +16,11 @@ public class ManagmentUserMain {
 	
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
+	User admin = new User("Calebe", LocalDate.of(2003, 03, 20), "1234");
+	
+	
 	public void Menu() {
+		users.add(admin);
 		while(true) {
 			System.out.println(" -----> Criar ou Logar na To Do List <----- ");
 			System.out.println(
@@ -30,7 +34,9 @@ public class ManagmentUserMain {
 			sc.nextLine();
 			if(resp == 1) {
 				System.out.println(" ---> Dados do Usuário: < --- ");
+				System.out.print("Nome de usuário: ");
 				String nome = sc.nextLine();
+				System.out.print("Senha de usuário: ");
 				String password = sc.next();
 				
 				for (User user : users) {
@@ -42,6 +48,7 @@ public class ManagmentUserMain {
 			}
 			if(resp == 2) {
 				System.out.println(" ---> Dados do Novo Usuário: < --- ");
+				System.out.print(" Nome de novo usuário: ");
 				String nome = sc.nextLine();
 				for (User user : users) {
 					if(user.getNome() == nome) {
@@ -49,7 +56,9 @@ public class ManagmentUserMain {
 						return;
 					}
 				}
+				System.out.print(" Senha de novo usuário: ");
 				String password = sc.next();
+				System.out.print(" Data de nascimento de novo usuário: ");
 				LocalDate birthDate = LocalDate.parse(sc.next(), dtf);
 				users.add(new User(nome, birthDate, password));
 			}
